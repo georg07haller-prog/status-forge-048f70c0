@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
@@ -8,6 +9,7 @@ import { ArrowLeft, Target, Sparkles, TrendingUp } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 import QuestCard from '../components/quest/QuestCard';
+import VideoPlayer from '../components/VideoPlayer';
 
 export default function Quests() {
   const navigate = useNavigate();
@@ -103,6 +105,18 @@ export default function Quests() {
       </div>
 
       <div className="max-w-4xl mx-auto px-6 -mt-4">
+        {/* Quest Demo Video */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-6"
+        >
+          <VideoPlayer 
+            videoId="1-Sdp27DDVyp1fWTzWcbn_nYFgvd_-m9F"
+            className="aspect-video shadow-xl rounded-2xl"
+          />
+        </motion.div>
+
         {/* Narrative banner */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
