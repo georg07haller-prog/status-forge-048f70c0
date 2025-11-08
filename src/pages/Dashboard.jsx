@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
@@ -11,6 +12,7 @@ import { motion } from 'framer-motion';
 import ScoreWheel from '../components/status/ScoreWheel';
 import StatCard from '../components/status/StatCard';
 import AvatarDisplay from '../components/avatar/AvatarDisplay';
+import VideoPlayer from '../components/VideoPlayer';
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -131,6 +133,18 @@ export default function Dashboard() {
       </div>
 
       <div className="max-w-6xl mx-auto px-6 -mt-6">
+        {/* Hero Video Banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-6"
+        >
+          <VideoPlayer 
+            videoId="1TQy5go7RRL5LwOt5jxqn1dwRN9HRYek0"
+            className="aspect-video shadow-2xl rounded-3xl"
+          />
+        </motion.div>
+
         {/* Score Wheel Card */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -147,6 +161,19 @@ export default function Dashboard() {
             fame={profile.fame_score}
             charm={profile.charm_score}
             gear={profile.gear_score}
+          />
+        </motion.div>
+
+        {/* Demo Video: Metrics Explanation */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="mb-6"
+        >
+          <VideoPlayer 
+            videoId="1lNiKtYqNVZ8V6wKQIiv-b9GYshCLmTuP"
+            className="aspect-video shadow-lg rounded-2xl"
           />
         </motion.div>
 
