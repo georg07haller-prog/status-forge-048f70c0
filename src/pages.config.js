@@ -1,9 +1,11 @@
 import Onboarding from './pages/Onboarding';
+import Dashboard from './pages/Dashboard';
 import Layout from './Layout.jsx';
 
 
 export const PAGES = {
     "Onboarding": Onboarding,
+    "Dashboard": Dashboard,
 }
 
 export const pagesConfig = {
