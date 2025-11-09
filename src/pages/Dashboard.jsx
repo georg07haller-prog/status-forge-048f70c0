@@ -6,13 +6,14 @@ import { base44 } from '@/api/base44Client';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Target, Swords, User, TrendingUp, Flame, AlertCircle } from 'lucide-react';
+import { Target, Swords, User, TrendingUp, Flame, AlertCircle, Crown } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 import ScoreWheel from '../components/status/ScoreWheel';
 import StatCard from '../components/status/StatCard';
 import AvatarDisplay from '../components/avatar/AvatarDisplay';
 import VideoPlayer from '../components/VideoPlayer';
+import PremiumBadge from '../components/PremiumBadge';
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -90,7 +91,10 @@ export default function Dashboard() {
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h1 className="text-3xl font-bold mb-1">StatusForge</h1>
+              <div className="flex items-center gap-3 mb-1">
+                <h1 className="text-3xl font-bold">StatusForge</h1>
+                <PremiumBadge isPremium={profile.is_premium} />
+              </div>
               <p className="text-blue-200 text-sm">Welcome back, {profile.username}!</p>
             </div>
             <Button
@@ -102,6 +106,29 @@ export default function Dashboard() {
               <User className="w-5 h-5" />
             </Button>
           </div>
+
+          {/* Premium CTA */}
+          {!profile.is_premium && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              onClick={() => navigate(createPageUrl('Premium'))}
+              className="bg-gradient-to-r from-yellow-400 to-orange-500 rounded-xl p-4 mb-4 cursor-pointer hover:shadow-lg transition-all"
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <Crown className="w-6 h-6 text-white" />
+                  <div>
+                    <p className="font-bold text-white">Upgrade to Premium</p>
+                    <p className="text-xs text-white/90">Unlock exclusive features & 2x growth</p>
+                  </div>
+                </div>
+                <Button size="sm" className="bg-white text-orange-600 hover:bg-gray-100">
+                  Upgrade
+                </Button>
+              </div>
+            </motion.div>
+          )}
 
           {/* Streak counter */}
           <div className="flex items-center gap-4 mb-6">
