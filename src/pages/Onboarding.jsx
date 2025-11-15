@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
@@ -140,14 +139,6 @@ export default function Onboarding() {
               exit={{ opacity: 0, y: -20 }}
               className="bg-white rounded-3xl shadow-2xl p-8 text-center"
             >
-              {/* Demo Video */}
-              <div className="mb-6">
-                <VideoPlayer 
-                  videoId="1bWL2AvpE8HLYPJiAJDfQjxvEDzSOeDez"
-                  className="aspect-video shadow-lg"
-                />
-              </div>
-
               <motion.div
                 animate={{ rotate: [0, 10, -10, 0] }}
                 transition={{ duration: 2, repeat: Infinity }}
@@ -204,14 +195,6 @@ export default function Onboarding() {
               <p className="text-gray-600 mb-6 text-center text-sm">
                 Select your starting avatar (don't worry, you'll level up!)
               </p>
-
-              {/* Avatar Evolution Video */}
-              <div className="mb-6">
-                <VideoPlayer 
-                  videoId="1K44OSgF4MDeAhy_OTHjyLOLkIDucEYvU"
-                  className="aspect-video shadow-lg"
-                />
-              </div>
 
               <div className="mb-8">
                 <Input
@@ -286,14 +269,6 @@ export default function Onboarding() {
               exit={{ opacity: 0, y: -20 }}
               className="bg-white rounded-3xl shadow-2xl p-8 text-center"
             >
-              {/* Final Demo Video */}
-              <div className="mb-6">
-                <VideoPlayer 
-                  videoId="1-Tcsm0KBK2iYjetxE9o4XsDBQzdVNXMN"
-                  className="aspect-video shadow-lg"
-                />
-              </div>
-
               <div className="text-5xl mb-4">🎯</div>
               <h2 className="text-2xl font-bold text-gray-900 mb-4">
                 Ready to Start Your Quest?
