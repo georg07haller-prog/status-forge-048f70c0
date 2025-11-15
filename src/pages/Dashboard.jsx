@@ -202,7 +202,7 @@ export default function Dashboard() {
         </div>
 
         {/* Quick Actions */}
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-4 mb-4">
           <Button
             onClick={() => navigate(createPageUrl('Quests'))}
             className="gradient-primary text-white py-8 rounded-2xl hover:shadow-lg transition-all"
@@ -225,6 +225,20 @@ export default function Dashboard() {
             </div>
           </Button>
         </div>
+
+        {/* Referral CTA */}
+        <Button
+          onClick={() => navigate(createPageUrl('Referrals'))}
+          className="w-full bg-gradient-to-r from-orange-500 to-pink-500 text-white py-6 rounded-2xl hover:shadow-lg transition-all mb-6"
+        >
+          <div className="flex items-center justify-center gap-3">
+            <span className="text-3xl">🎁</span>
+            <div className="text-left">
+              <p className="font-semibold">Invite Friends</p>
+              <p className="text-xs opacity-90">Get +5 quests per referral</p>
+            </div>
+          </div>
+        </Button>
 
         {/* Push notification mock */}
         <motion.div

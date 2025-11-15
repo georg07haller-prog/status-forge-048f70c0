@@ -30,8 +30,15 @@ export default function Onboarding() {
     setSyncing(true);
     
     try {
+      // Generate unique referral code
+      const referralCode = `${(username || 'HERO').substring(0, 3).toUpperCase()}${Math.random().toString(36).substring(2, 8).toUpperCase()}`;
+      
+      // Check for referral parameter
+      const urlParams = new URLSearchParams(window.location.search);
+      const referredBy = urlParams.get('ref');
+
       // Create user profile
-      await base44.entities.UserProfile.create({
+      const newProfile = await base44.entities.UserProfile.create({
         username: username || 'Hero',
         avatar_level: 1,
         total_score: 0,
@@ -41,9 +48,11 @@ export default function Onboarding() {
         charm_score: 12,
         gear_score: 8,
         daily_streak: 0,
-        completed_quests: 0,
+        completed_quests: referredBy ? 5 : 0,
         wins: 0,
-        avatar_title: 'Startup Serf'
+        avatar_title: 'Startup Serf',
+        referral_code: referralCode,
+        referred_by: referredBy || undefined
       });
 
       // Create some demo quests
@@ -95,27 +104,28 @@ export default function Onboarding() {
         }
       ]);
 
-      setTimeout(() => {
-        // Handle referral bonus
-    if (referredBy) {
-      const referrerProfiles = await base44.entities.UserProfile.filter({ referral_code: referredBy });
-      if (referrerProfiles.length > 0) {
-        const referrer = referrerProfiles[0];
-        await base44.entities.UserProfile.update(referrer.id, {
-          referral_count: (referrer.referral_count || 0) + 1,
-          completed_quests: (referrer.completed_quests || 0) + 5
-        });
+      // Handle referral bonus
+      if (referredBy) {
+        base44.entities.UserProfile.filter({ referral_code: referredBy }).then(referrerProfiles => {
+          if (referrerProfiles.length > 0) {
+            const referrer = referrerProfiles[0];
+            base44.entities.UserProfile.update(referrer.id, {
+              referral_count: (referrer.referral_count || 0) + 1,
+              completed_quests: (referrer.completed_quests || 0) + 5
+            });
+          }
+        }).catch(err => console.log('Referral bonus failed:', err));
       }
-    }
 
-    // Send welcome email (fire and forget)
-    base44.functions.invoke('sendWelcomeEmail', {
-      userId: newProfile.id,
-      username: username,
-      isPremium: false
-    }).catch(err => console.log('Email send failed:', err));
+      // Send welcome email (fire and forget)
+      base44.functions.invoke('sendWelcomeEmail', {
+        userId: newProfile.id,
+        username: username,
+        isPremium: false
+      }).catch(err => console.log('Email send failed:', err));
 
-    navigate(createPageUrl('Dashboard'));
+      setTimeout(() => {
+        navigate(createPageUrl('Dashboard'));
       }, 1000);
     } catch (error) {
       console.error('Error creating profile:', error);
