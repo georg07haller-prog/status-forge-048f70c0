@@ -83,6 +83,15 @@ export default function Profile() {
               variant="outline"
               size="icon"
               className="bg-white/10 border-white/20 text-white hover:bg-white/20"
+              onClick={() => {
+                const text = `🎯 I'm a ${profile.avatar_title} in StatusForge with ${totalScore} status points! Tracking my Wealth, Power, Fame, Charm & Gear daily. Join me!`;
+                if (navigator.share) {
+                  navigator.share({ title: 'StatusForge', text, url: window.location.origin });
+                } else {
+                  navigator.clipboard.writeText(text + ' ' + window.location.origin);
+                  alert('Link copied to clipboard!');
+                }
+              }}
             >
               <Share2 className="w-5 h-5" />
             </Button>
@@ -197,7 +206,18 @@ export default function Profile() {
                 <h3 className="font-bold text-lg mb-1">Empire Eclipse</h3>
                 <p className="text-sm text-purple-100">Share your victory with the world!</p>
               </div>
-              <Button className="bg-white text-purple-600 hover:bg-purple-50">
+              <Button 
+                className="bg-white text-purple-600 hover:bg-purple-50"
+                onClick={() => {
+                  const text = `🏆 ${profile.username} achieved ${profile.completed_quests} quests & ${profile.wins} victories in StatusForge! 💪\n\nStatus Score: ${totalScore}\n${avatarData[avatarLevel]?.title}\n\nJoin the empire!`;
+                  if (navigator.share) {
+                    navigator.share({ title: 'StatusForge Achievement', text, url: window.location.origin });
+                  } else {
+                    navigator.clipboard.writeText(text + '\n' + window.location.origin);
+                    alert('Achievement copied to clipboard!');
+                  }
+                }}
+              >
                 <Share2 className="w-4 h-4 mr-2" />
                 Share
               </Button>
