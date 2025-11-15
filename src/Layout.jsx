@@ -1,16 +1,35 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { createPageUrl } from '@/utils';
+import { Button } from "@/components/ui/button";
+import { BookOpen } from "lucide-react";
 
 export default function Layout({ children, currentPageName }) {
   const location = useLocation();
+  const navigate = useNavigate();
   
   // Hide layout for onboarding
   if (location.pathname.includes('Onboarding')) {
     return <div className="min-h-screen">{children}</div>;
   }
 
+  // Don't show guide button on the guide page itself
+  const showGuideButton = !location.pathname.includes('Guide');
+
   return (
     <div className="min-h-screen bg-gray-50">
+      {showGuideButton && (
+        <div className="fixed top-4 right-4 z-50">
+          <Button
+            onClick={() => navigate(createPageUrl('Guide'))}
+            className="bg-white text-blue-600 hover:bg-gray-100 shadow-lg border border-gray-200"
+            size="sm"
+          >
+            <BookOpen className="w-4 h-4 mr-2" />
+            Guide
+          </Button>
+        </div>
+      )}
       <style>{`
         :root {
           --color-primary: #1E3A8A;

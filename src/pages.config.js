@@ -4,6 +4,7 @@ import Quests from './pages/Quests';
 import Duels from './pages/Duels';
 import Profile from './pages/Profile';
 import Premium from './pages/Premium';
+import Guide from './pages/Guide';
 import Layout from './Layout.jsx';
 
 
@@ -14,6 +15,7 @@ export const PAGES = {
     "Duels": Duels,
     "Profile": Profile,
     "Premium": Premium,
+    "Guide": Guide,
 }
 
 export const pagesConfig = {

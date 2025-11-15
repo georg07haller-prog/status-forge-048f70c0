@@ -11,6 +11,14 @@ import { motion } from 'framer-motion';
 
 import AvatarDisplay from '../components/avatar/AvatarDisplay';
 
+const avatarData = {
+  1: { title: 'Startup Serf' },
+  2: { title: 'Rising Merchant' },
+  3: { title: 'Noble Influencer' },
+  4: { title: 'Royal Magnate' },
+  5: { title: 'Elite Overlord' }
+};
+
 const achievements = [
   { id: 1, name: 'First Quest', icon: '🎯', earned: true },
   { id: 2, name: 'Social Butterfly', icon: '🦋', earned: true },
