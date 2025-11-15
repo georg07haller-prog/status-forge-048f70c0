@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
@@ -93,20 +92,6 @@ export default function Duels() {
       </div>
 
       <div className="max-w-4xl mx-auto px-6 -mt-4">
-        {/* Duel Demo Video - only show on select-friend step */}
-        {step === 'select-friend' && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mb-6"
-          >
-            <VideoPlayer 
-              videoId="1cvom3XGxmubczsWqtlCJbXfshaEfNiXN"
-              className="aspect-video shadow-xl rounded-2xl"
-            />
-          </motion.div>
-        )}
-
         <AnimatePresence mode="wait">
           {/* Step 1: Select Friend */}
           {step === 'select-friend' && (
@@ -290,20 +275,6 @@ export default function Duels() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.8 }}
             >
-              {/* Victory/Loss Video */}
-              {showResult && (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="mb-6"
-                >
-                  <VideoPlayer 
-                    videoId={isWinner ? "1spCtdouEuyGEyEK1onz2cthZ3bN1fAwp" : "1FS92f9yOwAFPKH3USMV0tALyDS9n9o9-"}
-                    className="aspect-video shadow-2xl rounded-2xl"
-                  />
-                </motion.div>
-              )}
-
               <Card className={`rounded-2xl shadow-2xl overflow-hidden ${isWinner ? 'bg-gradient-to-br from-yellow-50 to-orange-50' : 'bg-gradient-to-br from-gray-50 to-blue-50'}`}>
                 <CardContent className="p-8">
                   <AnimatePresence>
