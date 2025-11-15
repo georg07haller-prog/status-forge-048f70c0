@@ -96,7 +96,14 @@ export default function Onboarding() {
       ]);
 
       setTimeout(() => {
-        navigate(createPageUrl('Dashboard'));
+        // Send welcome email
+    await base44.functions.invoke('sendWelcomeEmail', {
+      userId: newProfile.id,
+      username: username,
+      isPremium: false
+    }).catch(err => console.log('Email send failed:', err));
+
+    navigate(createPageUrl('Dashboard'));
       }, 1000);
     } catch (error) {
       console.error('Error creating profile:', error);

@@ -5,6 +5,10 @@ import Duels from './pages/Duels';
 import Profile from './pages/Profile';
 import Premium from './pages/Premium';
 import Guide from './pages/Guide';
+import Privacy from './pages/Privacy';
+import Terms from './pages/Terms';
+import Landing from './pages/Landing';
+import FAQ from './pages/FAQ';
 import Layout from './Layout.jsx';
 
 
@@ -16,6 +20,10 @@ export const PAGES = {
     "Profile": Profile,
     "Premium": Premium,
     "Guide": Guide,
+    "Privacy": Privacy,
+    "Terms": Terms,
+    "Landing": Landing,
+    "FAQ": FAQ,
 }
 
 export const pagesConfig = {
