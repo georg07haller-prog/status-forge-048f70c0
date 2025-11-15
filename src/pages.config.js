@@ -9,6 +9,7 @@ import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import Landing from './pages/Landing';
 import FAQ from './pages/FAQ';
+import Referrals from './pages/Referrals';
 import Layout from './Layout.jsx';
 
 
@@ -24,6 +25,7 @@ export const PAGES = {
     "Terms": Terms,
     "Landing": Landing,
     "FAQ": FAQ,
+    "Referrals": Referrals,
 }
 
 export const pagesConfig = {

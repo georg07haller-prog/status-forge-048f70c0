@@ -96,7 +96,19 @@ export default function Onboarding() {
       ]);
 
       setTimeout(() => {
-        // Send welcome email (fire and forget)
+        // Handle referral bonus
+    if (referredBy) {
+      const referrerProfiles = await base44.entities.UserProfile.filter({ referral_code: referredBy });
+      if (referrerProfiles.length > 0) {
+        const referrer = referrerProfiles[0];
+        await base44.entities.UserProfile.update(referrer.id, {
+          referral_count: (referrer.referral_count || 0) + 1,
+          completed_quests: (referrer.completed_quests || 0) + 5
+        });
+      }
+    }
+
+    // Send welcome email (fire and forget)
     base44.functions.invoke('sendWelcomeEmail', {
       userId: newProfile.id,
       username: username,
