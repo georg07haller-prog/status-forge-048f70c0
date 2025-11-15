@@ -96,8 +96,8 @@ export default function Onboarding() {
       ]);
 
       setTimeout(() => {
-        // Send welcome email
-    await base44.functions.invoke('sendWelcomeEmail', {
+        // Send welcome email (fire and forget)
+    base44.functions.invoke('sendWelcomeEmail', {
       userId: newProfile.id,
       username: username,
       isPremium: false
