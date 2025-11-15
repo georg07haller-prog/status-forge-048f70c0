@@ -105,9 +105,6 @@ export default function Onboarding() {
       ]);
 
       // Handle referral bonus (if applicable)
-      const urlParams = new URLSearchParams(window.location.search);
-      const referredBy = urlParams.get('ref');
-      
       if (referredBy) {
         base44.entities.UserProfile.filter({ referral_code: referredBy }).then(referrerProfiles => {
           if (referrerProfiles.length > 0) {
