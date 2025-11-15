@@ -45,6 +45,13 @@ export default function Premium() {
           premium_expires_at: expiresAt.toISOString()
         });
 
+        // Send premium welcome email (fire and forget)
+        base44.functions.invoke('sendWelcomeEmail', {
+          userId: profile.id,
+          username: profile.username,
+          isPremium: true
+        }).catch(err => console.log('Email send failed:', err));
+
         // Показываем успех
         setTimeout(() => {
           navigate(createPageUrl('Dashboard'));
