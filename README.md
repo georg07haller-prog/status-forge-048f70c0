@@ -1,7 +1,6 @@
 # Base44 App
 Status Forge 🚀
 Status Forge Demo https://www.youtube.com/shorts/qN9XRl_vvLE
-(Replace this with a real screenshot or GIF of your app in action — upload to repo and link here!)
 Status Forge is an innovative AI-powered tool for crafting dynamic status updates, notifications, and social media snippets. Originally generated with Base44 — the magic AI app builder — and fully migrated & refined by me for complete ownership and enhancements. Now open-source and ready for your tweaks!
 🌟 Quick Overview
 
@@ -27,7 +26,7 @@ Install dependencies:textnpm install
 Run the dev server:textnpm startOpen http://localhost:3000 in your browser.
 
 Live Demo
-Check it out live: Deployed on Vercel/Netlify https://status-forge.vercel.app/
+Check it out live: https://status-forge.vercel.app/
 📁 Project Structure
 textstatus-forge-048f70c0/
 ├── src/
