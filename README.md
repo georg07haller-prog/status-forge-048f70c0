@@ -1,6 +1,6 @@
 # Base44 App
 Status Forge 🚀
-Status Forge Demo
+Status Forge Demo https://www.youtube.com/shorts/qN9XRl_vvLE
 (Replace this with a real screenshot or GIF of your app in action — upload to repo and link here!)
 Status Forge is an innovative AI-powered tool for crafting dynamic status updates, notifications, and social media snippets. Originally generated with Base44 — the magic AI app builder — and fully migrated & refined by me for complete ownership and enhancements. Now open-source and ready for your tweaks!
 🌟 Quick Overview
